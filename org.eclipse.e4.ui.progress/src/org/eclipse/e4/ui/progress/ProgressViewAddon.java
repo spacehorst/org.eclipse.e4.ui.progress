@@ -34,9 +34,9 @@ public class ProgressViewAddon {
 		ContextInjectionFactory.make(Services.class, context);
 		ProgressManager progressManager = ContextInjectionFactory.make(ProgressManager.class, context);
 		appContext.set(ProgressManager.class, progressManager);
+		ContextInjectionFactory.make(FinishedJobs.class, context);
 		// bug-fix: add a ProgressViewUpdater to the application context
 		appContext.set(ProgressViewUpdater.class, ContextInjectionFactory.make(ProgressViewUpdater.class, appContext));
-		ContextInjectionFactory.make(FinishedJobs.class, context);
 		appContext.set(ContentProviderFactory.class,
 				ContextInjectionFactory.make(ContentProviderFactory.class, appContext));
 	}
