@@ -98,8 +98,11 @@ public class JobInfo extends JobTreeElement {
 	public void cancel() {
         this.canceled = true;
         this.job.cancel();
-        //Call the refresh so that this is updated immediately
-        progressManager.refreshJobInfo(this);
+
+		if (progressManager != null) { // see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492252
+			// Call the refresh so that this is updated immediately
+			progressManager.refreshJobInfo(this);
+		}
     }
 
     /**
